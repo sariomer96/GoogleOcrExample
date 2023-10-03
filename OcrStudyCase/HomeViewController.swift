@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import AVFoundation
 
-class ViewController: UIViewController {
-
+class HomeViewController: UIViewController {
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -18,5 +19,6 @@ class ViewController: UIViewController {
     @IBAction func imageToTextButton(_ sender: Any) {
         
     }
+    
 }
 
