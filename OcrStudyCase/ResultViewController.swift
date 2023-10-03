@@ -12,6 +12,7 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var resultWordsTextView: UITextView!
     @IBOutlet weak var resultTitleLabel: UILabel!
+    var resultTxt:String?
     @IBOutlet weak var takenPhotoImageView: UIImageView!
     var activityIndicator: UIActivityIndicatorView!
     var yourScore:String?
@@ -25,12 +26,17 @@ class ResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         initView()
         initVM()
         applyOCRForImage()
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func reTakePhotoButton(_ sender: Any) {
+        self.dismiss(animated: true)
+        
+    }
     private func initView() {
         guard let resultImage = resultImage else { return }
         takenPhotoImageView.image = resultImage
@@ -47,8 +53,9 @@ class ResultViewController: UIViewController {
     }
     private func initVM() {
         
+        resultTxt = resultTitleLabel.text
         yourScore = scoreLabel.text
-        scoreLabel.text! = " \(String(describing: yourScore))  \(String(score))"
+        scoreLabel.text! = " \(yourScore!)  \(String(score))"
         resultViewModel.callbackFoundText = { [weak self] resultText in
             guard let self = self else { return }
             DispatchQueue.main.async {
@@ -57,11 +64,19 @@ class ResultViewController: UIViewController {
              let matchedWords = self.resultViewModel.matchSearchWordBetweenDetectWords(detectedText: resultText)
               
                 if matchedWords.count > 0 {
+                    var aaabbb = ""
                     for item in matchedWords {
-                        self.resultTitleLabel.text! += item
+                        var pre = ""
+                        if aaabbb == ""{
+                            pre = " "
+                        }else{
+                            pre = ", "
+                        }
+                        aaabbb += "\(pre)\(item)"
                         self.score += self.scoreRate
                         self.scoreLabel.text = " \(self.yourScore ?? "YOUR SCORE :")  \(self.score)"
                     }
+                    self.resultTitleLabel.text! = "\(self.resultTxt!) \(aaabbb)"
                 }else{
                     let warning = UIAlertController(title: "Warning", message: "Matching words not found", preferredStyle: .alert)
                     let action = UIAlertAction(title: "Error", style: .default)
@@ -123,9 +138,7 @@ class ResultViewController: UIViewController {
 
         return newImage
     }
-    @IBAction func runOCRClick(_ sender: Any) {
-        applyOCRForImage()
-    }
+   
     
     @IBAction func retakePhotoClick(_ sender: Any) {
         self.dismiss(animated: true)

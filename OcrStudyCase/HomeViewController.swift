@@ -62,9 +62,12 @@ class HomeViewController: UIViewController {
     }
 
     func showSettingsAlert(message: String) {
-        let cancelButtonTitle = "Çık"
-        let settingsButtonTitle = "Ayarlar"
-        // TODO: Open Alert View
+        
+        let alert = UIAlertController(title: "Warning", message: message, preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        alert.addAction(cancel)
+        self.present(alert, animated: true)
+    
     }
 
     // MARK: - Private Methods
@@ -94,7 +97,7 @@ class HomeViewController: UIViewController {
     }
 
     private func configurePreviewLayer() {
-        previewLayer.videoGravity = .resizeAspectFill
+        //previewLayer.videoGravity = .resizeAspectFill
         previewLayer.session = captureSession
     }
 

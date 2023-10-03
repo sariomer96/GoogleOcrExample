@@ -31,13 +31,19 @@ final class ResultViewModel: ResultViewModelProtocol {
     func matchSearchWordBetweenDetectWords(detectedText:String) -> [String] {
         // TODO: Will be add.
         let wordList = Constants.shared.words
-         
-        let detectTxt = detectedText.components(separatedBy: " ")
+        
+        var txt = detectedText.replacingOccurrences(of: "\n", with: " ")
+        let detectedTxt = txt.components(separatedBy: " ")
+       
+        print(wordList)
+        print(detectedText)
         for item in wordList {
             
-            for text in detectTxt {
+            
+            for text in detectedTxt {
                 
                let lowerText =  text.lowercased()
+            //    print("lower txt \(lowerText)  \(item)")
                 if lowerText == item {
                     print("MATCHED!!")
                     matchedWords.insert(lowerText)
@@ -47,6 +53,7 @@ final class ResultViewModel: ResultViewModelProtocol {
         }
        
         let match = Array(matchedWords)
+      
         return match
         
     }

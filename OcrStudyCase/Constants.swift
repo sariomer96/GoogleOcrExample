@@ -13,5 +13,5 @@ final class Constants {
 
     public static let shared = Constants()
     
-    let words = ["pantene","orkid","gilette","elidor","dove","rexona"]
+    let words = ["pantene","orkid","gilette","elidor","dove","rexona","card","of"]
 }
