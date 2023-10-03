@@ -14,7 +14,9 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var resultTitleLabel: UILabel!
     @IBOutlet weak var takenPhotoImageView: UIImageView!
     var activityIndicator: UIActivityIndicatorView!
-
+    var yourScore:String?
+    var score = 0
+    var scoreRate = 10
 
     private lazy var resultViewModel: ResultViewModelProtocol = {
         return ResultViewModel()
@@ -44,12 +46,28 @@ class ResultViewController: UIViewController {
         activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
     private func initVM() {
+        
+        yourScore = scoreLabel.text
+        scoreLabel.text! = " \(String(describing: yourScore))  \(String(score))"
         resultViewModel.callbackFoundText = { [weak self] resultText in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 self.resultWordsTextView.text = resultText
                print("Bulunan Yazılar \(resultText)")
+             let matchedWords = self.resultViewModel.matchSearchWordBetweenDetectWords(detectedText: resultText)
+              
+                if matchedWords.count > 0 {
+                    for item in matchedWords {
+                        self.resultTitleLabel.text! += item
+                        self.score += self.scoreRate
+                        self.scoreLabel.text = " \(self.yourScore ?? "YOUR SCORE:")  \(self.score)"
+                    }
+                }
+                
             }
+            
+          
+        
         }
 
         resultViewModel.showProgress = { [weak self] in
