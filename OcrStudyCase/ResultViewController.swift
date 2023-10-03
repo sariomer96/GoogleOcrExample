@@ -16,6 +16,5 @@ class ResultViewController: UIViewController {
     }
     
 
-    
 
 }
