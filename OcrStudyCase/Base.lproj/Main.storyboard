@@ -32,6 +32,9 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Take Photo!">
                                     <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="takePhotoClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ouj-94-9dX"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -49,6 +52,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="R7x-9a-SAT"/>
+                    <connections>
+                        <outlet property="cameraView" destination="ymR-FG-yNq" id="zZP-zK-imU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -117,7 +123,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="ReTakePhoto"/>
                                 <connections>
-                                    <action selector="retakePhotoClick:" destination="F2A-iJ-THY" eventType="touchUpInside" id="PKX-qF-YmE"/>
+                                    <action selector="retakePhotoClick:" destination="F2A-iJ-THY" eventType="touchUpInside" id="sxD-gh-3Cx"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ekI-pg-n6w">
@@ -129,7 +135,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Run OCR"/>
                                 <connections>
-                                    <action selector="runOCRClick:" destination="F2A-iJ-THY" eventType="touchUpInside" id="Giq-QB-4ZZ"/>
+                                    <action selector="runOCRClick:" destination="F2A-iJ-THY" eventType="touchUpInside" id="t7z-dF-ddx"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Score:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSp-xo-G79">
@@ -170,10 +176,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="resultTitleLabel" destination="2bc-cH-YXW" id="sio-AO-x3R"/>
-                        <outlet property="resultWordsTextView" destination="Cu7-Il-ihk" id="IzD-CI-egz"/>
-                        <outlet property="scoreLabel" destination="vSp-xo-G79" id="fci-8D-eK5"/>
-                        <outlet property="takenPhotoImageView" destination="TOp-lp-Xmu" id="FYI-gM-QbO"/>
+                        <outlet property="resultTitleLabel" destination="2bc-cH-YXW" id="tuB-U3-x3c"/>
+                        <outlet property="resultWordsTextView" destination="Cu7-Il-ihk" id="FHc-3R-DEB"/>
+                        <outlet property="scoreLabel" destination="vSp-xo-G79" id="6Q4-5i-0Ds"/>
+                        <outlet property="takenPhotoImageView" destination="TOp-lp-Xmu" id="UsQ-S7-hcG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zag-Vp-P68" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
