@@ -7,6 +7,8 @@
 
 import UIKit
 
+public var score = 0
+
 class ResultViewController: UIViewController {
 
     @IBOutlet weak var scoreLabel: UILabel!
@@ -16,7 +18,7 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var takenPhotoImageView: UIImageView!
     var activityIndicator: UIActivityIndicatorView!
     var yourScore:String?
-    var score = 0
+ 
     var scoreRate = 10
 
     private lazy var resultViewModel: ResultViewModelProtocol = {
@@ -73,8 +75,8 @@ class ResultViewController: UIViewController {
                             pre = ", "
                         }
                         aaabbb += "\(pre)\(item)"
-                        self.score += self.scoreRate
-                        self.scoreLabel.text = " \(self.yourScore ?? "YOUR SCORE :")  \(self.score)"
+                        score += self.scoreRate
+                        self.scoreLabel.text = " \(self.yourScore ?? "YOUR SCORE :")  \(score)"
                     }
                     self.resultTitleLabel.text! = "\(self.resultTxt!) \(aaabbb)"
                 }else{

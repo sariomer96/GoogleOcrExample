@@ -9,8 +9,8 @@ import UIKit
 import AVFoundation
 
 class HomeViewController: UIViewController {
-    @IBOutlet weak var testView: UIImageView!
-    @IBOutlet weak var cameraView: UIView!
+    @IBOutlet weak var camView: UIImageView!
+     
     
     /// Variables
     var captureSession = AVCaptureSession()
@@ -39,8 +39,8 @@ class HomeViewController: UIViewController {
 
     private func setupLayers() {
 
-        previewLayer.frame = testView.bounds
-        testView.layer.addSublayer(previewLayer)
+        previewLayer.frame = camView.bounds
+        camView.layer.addSublayer(previewLayer)
     }
 
 
