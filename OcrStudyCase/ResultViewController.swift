@@ -60,8 +60,13 @@ class ResultViewController: UIViewController {
                     for item in matchedWords {
                         self.resultTitleLabel.text! += item
                         self.score += self.scoreRate
-                        self.scoreLabel.text = " \(self.yourScore ?? "YOUR SCORE:")  \(self.score)"
+                        self.scoreLabel.text = " \(self.yourScore ?? "YOUR SCORE :")  \(self.score)"
                     }
+                }else{
+                    let warning = UIAlertController(title: "Warning", message: "Matching words not found", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "Error", style: .default)
+                    warning.addAction(action)
+                    self.present(warning, animated: true)
                 }
                 
             }
@@ -74,6 +79,7 @@ class ResultViewController: UIViewController {
             guard let self = self else { return }
             DispatchQueue.main.async {
                 self.activityIndicator.startAnimating()
+                self.resultTitleLabel.text = ""  //  DEGISMESI GEREKEBILIR !!
             }
         }
 
