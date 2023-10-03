@@ -9,6 +9,7 @@ import UIKit
 import AVFoundation
 
 class HomeViewController: UIViewController {
+    @IBOutlet weak var testView: UIImageView!
     @IBOutlet weak var cameraView: UIView!
     
     /// Variables
@@ -24,10 +25,10 @@ class HomeViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    @IBAction func takePhotoClick(_ sender: Any) {
+    @IBAction func takePhotoClicked(_ sender: Any) {
         takeAPhoto()
     }
-    
+  
 
     private func initView() {
    
@@ -38,8 +39,8 @@ class HomeViewController: UIViewController {
 
     private func setupLayers() {
 
-        previewLayer.frame = cameraView.bounds
-        cameraView.layer.addSublayer(previewLayer)
+        previewLayer.frame = testView.bounds
+        testView.layer.addSublayer(previewLayer)
     }
 
 
@@ -97,7 +98,7 @@ class HomeViewController: UIViewController {
     }
 
     private func configurePreviewLayer() {
-        //previewLayer.videoGravity = .resizeAspectFill
+        previewLayer.videoGravity = .resizeAspectFill
         previewLayer.session = captureSession
     }
 
