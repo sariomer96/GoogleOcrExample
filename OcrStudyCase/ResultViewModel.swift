@@ -16,15 +16,20 @@ final class ResultViewModel: ResultViewModelProtocol {
     var showProgress: VoidCallback?
     var hideProgress: VoidCallback?
     var matchedWords:Set<String> = []
+    
     func getOCRText(_ encodeImageText: String) {
         showProgress?()
         self.encodeImageText = encodeImageText
         OCRService.shared.detect(encodeImage: encodeImageText) { [weak self] responses in
-            guard let self = self else { return }
+            guard let self = self else {
+                print("ffd"); return }
             self.hideProgress?()
-            guard let response = responses else { return }
-            guard let detectedText = response.annotations?[0].text else { return }
-            self.callbackFoundText?(detectedText)
+            guard let response = responses else {  self.callbackFoundText?(""); return }
+            if let detectedText = response.annotations?[0].text{
+                self.callbackFoundText?(detectedText)
+                
+            }
+  
         }
     }
 
@@ -35,17 +40,16 @@ final class ResultViewModel: ResultViewModelProtocol {
         var txt = detectedText.replacingOccurrences(of: "\n", with: " ")
         let detectedTxt = txt.components(separatedBy: " ")
        
-        print(wordList)
-        print(detectedText)
+     
         for item in wordList {
             
             
             for text in detectedTxt {
                 
                let lowerText =  text.lowercased()
-            //    print("lower txt \(lowerText)  \(item)")
+      
                 if lowerText == item {
-                    print("MATCHED!!")
+                    
                     matchedWords.insert(lowerText)
                     
                 }

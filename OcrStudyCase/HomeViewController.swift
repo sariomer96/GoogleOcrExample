@@ -65,8 +65,8 @@ class HomeViewController: UIViewController {
     func showSettingsAlert(message: String) {
         
         let alert = UIAlertController(title: "Warning", message: message, preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
-        alert.addAction(cancel)
+        let ok = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(ok)
         self.present(alert, animated: true)
     
     }
@@ -193,20 +193,8 @@ extension HomeViewController: AVCapturePhotoCaptureDelegate {
         controller.modalPresentationStyle = .fullScreen
         self.navigationController?.present(controller, animated: true)
         // TODO: will push vc and show image
-//        showPhoto(with: image, contentMode: .scaleAspectFill)
+
     }
 }
 
-//// MARK: - TextField Delegate
-//extension HomeViewController: UITextFieldDelegate {
-//    func textFieldDidEndEditing(_ textField: UITextField) {
-//        self.setSearchWorldLabel(textField.text)
-//    }
-//
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//          textField.resignFirstResponder()
-//          return true
-//      }
-//    
-//}
 

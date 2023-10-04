@@ -24,34 +24,7 @@ final class CameraPermissionManager {
 
     // MARK: - Typealias
     typealias completionHandler = (_ accessGranted: Bool) -> Void
-//    typealias authorizationStatusCompletionHandler = (_ isDetermined: Bool) -> Void
-//
-//    // MARK: - Methods
-//    func isAuthorizationStatusDetermined(with permission: Permission,
-//                                completionHandler: @escaping authorizationStatusCompletionHandler) {
-//        switch permission {
-//
-//        case .cameraUsage:
-//            switch AVCaptureDevice.authorizationStatus(for: .video) {
-//            case .authorized, .denied, .restricted:
-//                completionHandler(true)
-//            case .notDetermined:
-//                completionHandler(false)
-//            @unknown default:
-//                completionHandler(false)
-//            }
-//
-//        case .photoLibraryUsage:
-//            switch PHPhotoLibrary.authorizationStatus() {
-//            case .authorized, .denied, .restricted, .limited:
-//                completionHandler(true)
-//            case .notDetermined:
-//                completionHandler(false)
-//            @unknown default:
-//                completionHandler(false)
-//            }
-//        }
-//    }
+
 
     func requestAccess(_ permission: Permission,
                        completionHandler: @escaping completionHandler) {
